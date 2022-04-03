@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:intl/intl.dart';
 HealthService healthServiceJson(String str) =>
     HealthService.fromJson(json.decode(str));
 
@@ -10,15 +10,20 @@ class HealthService {
   num meanCPU;
   num meandisk;
   num meanRAM;
-  String peakTime;
+  num peakTimeCPU;
+  num peakTimeRAM;
+  num peakTimeDisk;
   num countMessages;
+  
 
   HealthService({
     required this.serviceName,
     required this.meanCPU,
     required this.meandisk,
     required this.meanRAM,
-    required this.peakTime,
+    required this.peakTimeCPU,
+    required this.peakTimeRAM,
+    required this.peakTimeDisk,
     required this.countMessages,
   });
 
@@ -27,7 +32,9 @@ class HealthService {
         meanCPU: json["meanCPU"],
         meandisk: json["meandisk"],
         meanRAM: json["meanRAM"],
-        peakTime: json["peakTime"],
+        peakTimeCPU: json["peakTimeCPU"],
+        peakTimeRAM: json["peakTimeRAM"],
+        peakTimeDisk: json["peakTimeDisk"],
         countMessages: json["countMessages"],
       );
 
@@ -36,7 +43,9 @@ class HealthService {
         "meanCPU": meanCPU,
         'meandisk': meandisk,
         'meanRAM': meanRAM,
-        'peakTime': peakTime,
+        'peakTimeCPU': peakTimeCPU,
+        'peakTimeRAM': peakTimeRAM,
+        'peakTimeDisk': peakTimeDisk,
         'countMessages': countMessages,
       };
 }

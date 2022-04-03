@@ -15,30 +15,25 @@ class Body extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: SizedBox(
         height: MediaQuery.of(context).size.height*0.7,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 20),
-                padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 255, 253, 253),
-                  borderRadius: BorderRadius.circular(34),
-                ),
-                child: ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: healthServiceList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return HealthServiceRow(
-                      healthService: healthServiceList[index],
-                    );
-                  },
-                ),
-              )
-            ],
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 20),
+          padding: const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 255, 253, 253),
+            borderRadius: BorderRadius.circular(34),
+          ),
+          child:  SingleChildScrollView(
+            child: ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: healthServiceList.length,
+              itemBuilder: (BuildContext context, int index) {
+                return HealthServiceRow(
+                  healthService: healthServiceList[index],
+                );
+              },
+            ),
           ),
         ),
       ),

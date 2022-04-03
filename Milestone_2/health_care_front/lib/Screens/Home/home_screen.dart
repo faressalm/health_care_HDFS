@@ -20,17 +20,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
     getAnalysis(DateTimeRange dateRange) async {
       loadingDialog(context);
-      var newList = await getheallthServicesList();
+      // var newList = await getheallthServicesList();
       Navigator.pop(context);
       setState(() {
-       widget.healthServiceList= newList;
-        // widget.healthServiceList.add(HealthService(
-        //     countMessages: 50,
-        //     meanCPU: 0.3,
-        //     meanRAM: 0,
-        //     meandisk: 5,
-        //     peakTime: "2021/22/2",
-        //     serviceName: "location"));
+      //  widget.healthServiceList= newList;
+        widget.healthServiceList.add(HealthService(
+            countMessages: 50,
+            meanCPU: 0.3,
+            meanRAM: 0,
+            meandisk: 5,
+            peakTimeCPU: 1647938696,
+            peakTimeRAM:1647938696,
+            peakTimeDisk: 1647938696,
+            serviceName: "location"));
       });
     }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:health_care_front/constant.dart';
 import 'Screens/Home/home_screen.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Web',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.amber,
+        primaryColor: kPrimaryColor,
 
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
