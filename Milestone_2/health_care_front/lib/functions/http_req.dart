@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 Future<List<HealthService>> getheallthServicesList(
     DateTime start, DateTime end) async {
   var endpointUrl =
-      'http://localhost:8080/getAllServices?start=${start.millisecond / 1000}&end=${end.millisecond / 1000}';
+      'http://localhost:8080/getAllServices?start=${start.microsecondsSinceEpoch / 1000}&end=${end.microsecondsSinceEpoch / 1000}';
   var data = await http.get(Uri.parse(endpointUrl));
   var jsonData = json.decode(data.body);
   List<HealthService> heallthServicesList = jsonData

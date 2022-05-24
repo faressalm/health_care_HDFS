@@ -1,3 +1,4 @@
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:health_care_front/constant.dart';
 import '../../Components/app_bar.dart';
@@ -18,12 +19,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    getAnalysis(DateTimeRange dateRange) async {
+    getAnalysis(DateTime start,DateTime end) async {
       loadingDialog(context);
-      var newList = await getheallthServicesList(dateRange.start,dateRange.end);
+      var newList =
+          await getheallthServicesList(start, end);
       Navigator.pop(context);
       setState(() {
-       widget.healthServiceList= newList;  
+        widget.healthServiceList = newList;
       });
     }
 
@@ -43,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   getAnalysis: getAnalysis,
                 ),
                 Body(healthServiceList: widget.healthServiceList),
-              ],
+               ],
             ),
           ),
         );

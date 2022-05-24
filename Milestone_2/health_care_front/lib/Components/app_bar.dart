@@ -1,3 +1,4 @@
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constant.dart';
@@ -13,22 +14,10 @@ class CustomAppBar extends StatefulWidget {
 
 class _CustomAppBarState extends State<CustomAppBar> {
   DateTimeRange dateRange =  DateTimeRange(start:DateTime.now(), end:DateTime.now(),);
-
+  late DateTime start = DateTime.now();
+  late DateTime end = DateTime.now();
   @override
   Widget build(BuildContext context) {
-Future pickDateRange() async{
- dynamic newDateRange =await showDateRangePicker(context: context, initialDateRange : dateRange,
-  firstDate:DateTime(2010) ,
-  lastDate:DateTime.now(),
- );
- if(newDateRange!=null){
-   setState(() {
-     dateRange = newDateRange;
-   });
- }
-}
-    final start= dateRange.start;
-    final end= dateRange.end;
     return Container(
       margin: const EdgeInsets.all(20),
       padding: const EdgeInsets.all(20),
@@ -51,23 +40,65 @@ Future pickDateRange() async{
             "Health Care System".toUpperCase(),
             style:const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
-       const   Spacer(),
-          DateButton(
-            title: "From",
-            text: "${start.year}/${start.day}/${start.month}",
-            press: pickDateRange,
-          ),
-          DateButton(
-            title: "To",
-            text: "${end.year}/${end.day}/${end.month}",
-            press: pickDateRange,
-          ),
+             const Spacer(),
+             const   Text("From: "),
+               ConstrainedBox(
+                 constraints: const BoxConstraints(maxWidth: 200),
+                 child: DateTimePicker(
+                    type: DateTimePickerType.dateTimeSeparate,
+                    dateMask: 'd MMM, yyyy',
+                    initialValue: DateTime.now().toString(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                    icon: Icon(Icons.event),
+                    dateLabelText: 'Date',
+                    timeLabelText: "Hour",
+                    selectableDayPredicate: (date) {
+                      return true;
+                    },
+                    onChanged: (val) {
+                      start = DateTime.parse(val);
+                    },
+                    validator: (val) {
+                      print(val);
+                      return null;
+                    },
+                    onSaved: (val) => print(val),
+                  ),
+               )
+             ,
+             const   Text("To: "),
+               ConstrainedBox(
+                 constraints: const BoxConstraints(maxWidth: 200),
+                 child: DateTimePicker(
+                    type: DateTimePickerType.dateTimeSeparate,
+                    dateMask: 'd MMM, yyyy',
+                    initialValue: DateTime.now().toString(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                    icon: Icon(Icons.event),
+                    dateLabelText: 'Date',
+                    timeLabelText: "Hour",
+                    selectableDayPredicate: (date) {
+                      return true;
+                    },
+                    onChanged: (val) {
+                      end = DateTime.parse(val);
+                    },
+                    validator: (val) {
+                      print(val);
+                      return null;
+                    },
+                    onSaved: (val) => print(val),
+                  ),
+               )
+             ,
           ClipRRect(
       borderRadius: BorderRadius.circular(25),
       child: FlatButton(
         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
         color: kPrimaryColor,
-        onPressed: (){widget.getAnalysis(dateRange);},
+        onPressed: (){widget.getAnalysis(start,end);},
         child: Text(
           "Get Analysis".toUpperCase(),
                     style: TextStyle(color: Colors.white),
