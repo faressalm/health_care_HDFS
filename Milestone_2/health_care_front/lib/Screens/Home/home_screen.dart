@@ -23,16 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
       var newList = await getheallthServicesList(dateRange.start,dateRange.end);
       Navigator.pop(context);
       setState(() {
-       widget.healthServiceList= newList;
-        // widget.healthServiceList.add(HealthService(
-        //     countMessages: 50,
-        //     meanCPU: 0.3,
-        //     meanRAM: 0,
-        //     meandisk: 5,
-        //     peakTimeCPU: 1647938696,
-        //     peakTimeRAM:1647938696,
-        //     peakTimeDisk: 1647938696,
-        //     serviceName: "location"));
+       widget.healthServiceList= newList;  
       });
     }
 

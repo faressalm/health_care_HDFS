@@ -31,7 +31,7 @@ class HealthServiceRow extends StatelessWidget {
             children: [
               ...serviceInfo("Service Name",healthService.serviceName),
               ...serviceInfo("Mean CPU",healthService.meanCPU),
-              ...serviceInfo("Mean Disk",healthService.meandisk),
+              ...serviceInfo("Mean Disk",healthService.meanDisk),
               ...serviceInfo("Mean RAM",healthService.meanRAM),
               ...serviceInfo("Peak Time CPU",DateTime.fromMillisecondsSinceEpoch(healthService.peakTimeCPU.toInt() * 1000) ),
               ...serviceInfo("Peak Time RAM",DateTime.fromMillisecondsSinceEpoch(healthService.peakTimeRAM.toInt() * 1000) ),

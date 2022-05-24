@@ -8,7 +8,7 @@ String healthServiceToJson(HealthService data) => json.encode(data.toJson());
 class HealthService {
   String serviceName;
   num meanCPU;
-  num meandisk;
+  num meanDisk;
   num meanRAM;
   num peakTimeCPU;
   num peakTimeRAM;
@@ -19,7 +19,7 @@ class HealthService {
   HealthService({
     required this.serviceName,
     required this.meanCPU,
-    required this.meandisk,
+    required this.meanDisk,
     required this.meanRAM,
     required this.peakTimeCPU,
     required this.peakTimeRAM,
@@ -30,7 +30,7 @@ class HealthService {
   factory HealthService.fromJson(Map<String, dynamic> json) => HealthService(
         serviceName: json["serviceName"],
         meanCPU: json["meanCPU"],
-        meandisk: json["meandisk"],
+        meanDisk: json["meanDisk"],
         meanRAM: json["meanRAM"],
         peakTimeCPU: json["peakTimeCPU"],
         peakTimeRAM: json["peakTimeRAM"],
@@ -41,7 +41,7 @@ class HealthService {
   Map<String, dynamic> toJson() => {
         "serviceName": serviceName,
         "meanCPU": meanCPU,
-        'meandisk': meandisk,
+        'meanDisk': meanDisk,
         'meanRAM': meanRAM,
         'peakTimeCPU': peakTimeCPU,
         'peakTimeRAM': peakTimeRAM,
